@@ -1,0 +1,70 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
+
+  defaultConfig {
+    minSdkVersion rootProject.ext.minSdkVersion
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    externalNativeBuild {
+      cmake {
+        cppFlags "-std=c++11 -frtti -fexceptions"
+        abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+      }
+    }
+  }
+
+  lintOptions {
+    textReport true
+    textOutput 'stdout'
+  }
+
+  sourceSets {
+    androidTest {
+      java.srcDirs = ['src/androidTest/java', 'src/androidTest/kotlin']
+    }
+  }
+
+  testOptions {
+    unitTests.returnDefaultValues = true
+  }
+
+  compileOptions {
+    sourceCompatibility 1.8
+    targetCompatibility 1.8
+  }
+
+  externalNativeBuild {
+    cmake {
+      path file('CMakeLists.txt')
+    }
+  }
+
+}
+
+task testAll(dependsOn: ['test', 'connectedAndroidTest']) {
+  description = "Run all tests"
+}
+
+dependencies {
+  implementation deps.supportAnnotations
+  compileOnly "com.google.code.gson:gson:2.8.5"
+  testImplementation deps.junit
+  testImplementation deps.truth
+  testImplementation deps.robolectric
+  testImplementation deps.mockito
+  testImplementation deps.json
+  testImplementation deps.kotlin
+  androidTestImplementation deps.runner
+  androidTestImplementation deps.rules
+  androidTestImplementation deps.mockito
+  androidTestImplementation deps.kotlin
+  androidTestImplementation 'org.mockito:mockito-android:2.16.0'
+  androidTestImplementation "com.dianping.android.sdk:logan:1.2.2"
+  androidTestImplementation "com.google.code.gson:gson:2.8.5"
+}
+
+apply from: rootProject.file('gradle/maven_push.gradle')
