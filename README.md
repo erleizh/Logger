@@ -46,6 +46,8 @@ Logger#args(Object... args)//自动格式化
 
 #### TODO
 
+- [ ] 添加 lint 检查 避免直接使用 android.util.Log.java 和 System.out.print
+
 - [ ] 日志加密存储
    
    1. 把 openssl 的 aes 模块（AES-NI使用硬件指令集加密）抽取出来。作为日志加密模块
