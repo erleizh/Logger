@@ -80,6 +80,6 @@ Logger#args(Object... args)//自动格式化
       D/PerformanceTester: cost 769ms 	390/s 	memory 70.6M 	async_json_mmap
       D/PerformanceTester: -----------------------------------------------------
       ```
-   
+- [] JNI 日志转发到Java层  
       
 

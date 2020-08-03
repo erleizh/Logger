@@ -19,11 +19,12 @@
 #define LOGF(...)
 #endif
 
-#include "../../../../../../android-sdk/ndk-bundle/sysroot/usr/include/jni.h"
+
 #include <android/log.h>
 #include <sys/mman.h>
 #include <android/log.h>
 #include <sys/mman.h>
+#include <jni.h>
 
 #ifdef __cplusplus
 extern "C" {

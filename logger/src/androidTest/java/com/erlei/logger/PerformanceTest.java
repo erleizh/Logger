@@ -106,6 +106,7 @@ public class PerformanceTest {
                         throw new IllegalStateException(e);
                     }
                 })
+                .fileListener(new JsonFormatStrategy.JsonFileListener())
                 .suffix(".json")
                 .build();
         MockPrintStrategy strategy = MockPrintStrategy.warp(diskLogStrategy);
@@ -129,6 +130,7 @@ public class PerformanceTest {
         DiskPrintStrategy diskLogStrategy = DiskPrintStrategy.newBuilder()
                 .writerFactory(FileLogWriter::new)
                 .suffix(".json")
+                .fileListener(new JsonFormatStrategy.JsonFileListener())
                 .build();
         MockPrintStrategy strategy = MockPrintStrategy.warp(diskLogStrategy);
         logger.addLogAdapter(new DiskLogAdapter(JsonFormatStrategy.newBuilder()
@@ -157,6 +159,7 @@ public class PerformanceTest {
                         throw new IllegalStateException(e);
                     }
                 })
+                .fileListener(new JsonFormatStrategy.JsonFileListener())
                 .suffix(".json")
                 .build();
         MockPrintStrategy strategy = MockPrintStrategy.warp(diskLogStrategy);
@@ -181,6 +184,7 @@ public class PerformanceTest {
         DiskPrintStrategy diskLogStrategy = DiskPrintStrategy.newBuilder()
                 .writerFactory(FileLogWriter::new)
                 .suffix(".json")
+                .fileListener(new JsonFormatStrategy.JsonFileListener())
                 .build();
         MockPrintStrategy strategy = MockPrintStrategy.warp(diskLogStrategy);
         logger.addLogAdapter(new AsyncLogAdapter(new DiskLogAdapter(JsonFormatStrategy.newBuilder()

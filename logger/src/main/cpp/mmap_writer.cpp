@@ -67,36 +67,6 @@ int MMAPWriter::write(jbyte *bytes, jint offset, jlong len) {
     }
     return 0;
 }
-//
-//int MMAPWriter::write(jbyte *bytes, jint offset, jlong len) {
-//    if (buffer == NULL) {
-//        return -1;
-//    } else {
-//        jbyte *tmp = NULL;
-//        long tmpSize = 0;
-//        //如果剩余空间不够，那么分两次写，填充完剩余空间之后重新映射，然后再写剩余的数据
-//        if (writtenBytes + len > bufferSize) {
-//            tmpSize = (writtenBytes + len) - bufferSize;
-//            size_t i = len - ((writtenBytes + len) - bufferSize);
-//            tmp = bytes + i;
-//            memcpy(buffer + writtenBytes, bytes + offset, i);
-//            writtenBytes += i;
-//            if (flush() != 0) {
-//                return -2;
-//            }
-//        }
-//        if (tmp != NULL) {
-//            LOGD("write tmp %ld writtenBytes %ld tmpSize %ld", (long) len, writtenBytes,tmpSize);
-//            memcpy(buffer + writtenBytes, tmp, (size_t) tmpSize);
-//            writtenBytes += tmpSize;
-//        } else {
-//            memcpy(buffer + writtenBytes, bytes + offset, (size_t) len);
-//            writtenBytes += len;
-//        }
-//        LOGD("write %ld writtenBytes %ld", (long) len, writtenBytes);
-//    }
-//    return 0;
-//}
 
 MMAPWriter::~MMAPWriter() {
     if (buffer != NULL) {

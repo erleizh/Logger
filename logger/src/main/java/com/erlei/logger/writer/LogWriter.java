@@ -10,12 +10,19 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+/**
+ * Create by erlei on 2019-11-04
+ *
+ * Email : erleizh@gmail.com
+ *
+ * Describe : 之所以不直接使用writer是因为 write(byte[] buffer, int off, int len) 方法签名不一样
+ */
 public abstract class LogWriter implements Closeable, Flushable {
 
     /**
-     * The object used to synchronize operations on this stream.  For
+     * the object used to synchronize operations on this stream.  for
      * efficiency, a character-stream object may use an object other than
-     * itself to protect critical sections.  A subclass should therefore use
+     * itself to protect critical sections.  a subclass should therefore use
      * the object in this field rather than <tt>this</tt> or a synchronized
      * method.
      */
